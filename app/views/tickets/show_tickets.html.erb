@@ -1,0 +1,29 @@
+<div>
+	<h1><%= "Tickets to #{@event.name}" %></h1>
+	<h2><%= "#{@event.date}" %></h2>
+	<table class="table">
+		<thead>
+			<th>Section</th>
+			<th>Row</th>
+			<th>Price per Ticket</th>
+			<th>Quantity</th>
+			<th>&nbsp</th>
+		</thead>
+		<tbody>
+		<% @tickets[:ticket_group].each do |ticket| %>
+		<tr>
+			<td><%= "#{ticket[:section]}" %></td>
+			<td><%= "#{ticket[:row]}" %></td>
+			<td><%= "#{ticket[:actual_price]}" %></td>
+			<td><%= if ticket[:valid_splits][:int].length == 1
+				select("ticket", "quantity", ticket[:valid_splits][:int].split)
+			else
+				select("ticket", "quantity", ticket[:valid_splits][:int].sort)
+			end %>
+			</td>
+			<td><%= link_to "Add to Cart", "#", :class=>"btn btn-primary" %></td>
+		</tr>
+		<% end -%>
+		</tbody>
+	</table>
+ </div>

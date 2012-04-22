@@ -1,0 +1,29 @@
+<div>
+	<h1><%= "#{Time.now.year} #{@team_name} Schedule" %></h1>
+	<table class="table table-sriped">
+		<thead>
+			<th>Description</th>
+			<th>Date and Time</th>
+			<th>Venue</th>
+			<th>Price</th>
+			<th>&nbsp</th>
+		</thead>
+		<tbody>
+		<% @events.each do |event| %>
+		<tr>
+			<td><strong><%= link_to "#{event.name}", "#" %></strong></td>
+			<td>
+				<%= event.date.localtime.strftime("%a %b %-d, %Y") %><br />
+				<%= event.date.localtime.strftime("%-I:%M %p") %>
+			</td>
+			<td>
+				<%= "#{event.venue}" %><br />
+				<%= "#{event.city}, #{event.state}" %></td>
+			<td>From $1</td>
+			<td><%= link_to "See Tickets", "#{@team_name.gsub(" ","-")}-Tickets/#{event.event_id}", 
+			 :class=>"btn btn-primary" %></td>
+		</tr>
+		<% end -%>
+		</tbody>
+	</table>
+ </div>

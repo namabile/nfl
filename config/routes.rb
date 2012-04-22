@@ -1,6 +1,8 @@
 Nfl::Application.routes.draw do
 
-  root :to => 'static_pages#home'
+  root :to => "static_pages#home"
+  match "/:slug" => "teams#show_events"
+  match "/:slug/:event_id" => "tickets#show_tickets"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

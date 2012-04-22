@@ -1,17 +1,30 @@
-<h1>Home</h1>
 <div class="row">
-  <div class="span4" id="left_nav">
-	<h4>Featured Tickets</h4>
-	<ul>
-		<li><a href='#'>2012 Super Bowl XLVI Tickets</a></li>
-		<li><a href='#'>NFC Playoff Tickets</a></li>
-		<li><a href='#'>AFC Playoff Tickets</a></li>
-		<li><a href='#'>2012 Pro Bowl Tickets</a></li>
-  </div>
-  <div class="span8" id="top_content">
-  	<h3>Arizona Cardinals Tickets</h3>
-	<p>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ut dignissim diam. In a justo nisi. Fusce suscipit nulla non lorem pellentesque eleifend laoreet ante ullamcorper. Proin est turpis, hendrerit vel porttitor at, fringilla in nisl. Fusce pulvinar auctor libero at semper. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; In laoreet odio id ipsum molestie iaculis. Donec aliquam, neque ut luctus sollicitudin, orci nibh tincidunt felis, a molestie nisi nulla a dui. Proin at nisi et tellus consequat vulputate sit amet non libero. In quis nulla vitae lacus bibendum pulvinar. Donec non elit libero. 
-	</p>
-  </div>
+	<div class="span8 offset4">
+		<h1>Top Baseball Tickets</h1>
+		<h2>Welcome to your number one source for MLB tickets!</h2>
+	</div>
+</div>
+<div class="row">
+	<div class="span8 offset4" id="content">
+		<br />
+		<img src="http://farm3.staticflickr.com/2447/3889973492_04f8690fb9_z.jpg" alt="Nick's NFL Tickets">
+		<h6>via Flikr user <a href="#">Example</a></h6>
+		<br />
+		<p>
+		Nick's NFL tickets has a full seclection of the finest tickets to the hottest football games. Our site is 128 bit encrypted and secure. Our tickets are also backed by Ticket Network's 100% guarantee. This means your NFL tickets will be 100% authentic and are guaranteed to arrive before the event. We appreciate your business and hope you will come back to see us soon!
+		</p>
+		<h3>Featured Tickets</h3>
+		<table class="table table-striped">
+		  <tr><td><a href='#'>2012 Super Bowl XLVI Tickets</a></td></tr>
+		  <tr><td><a href='#'>NFC Playoff Tickets</a></td></tr>
+		  <tr><td><a href='#'>AFC Playoff Tickets</a></td></tr>
+		  <tr><td><a href='#'>2012 Pro Bowl Tickets</a></td></tr>
+		</table>
+		<h3><%= Time.now.year %> NFL Tickets by Team</h3>
+		<table class="table table-striped">
+			<% @teams.each do |team| %>
+				<tr><td><%= link_to "#{team.name} Tickets", "#{team.name.gsub(" ","-")}-Tickets" %></td></tr>
+			<% end -%>
+		</table>
+	</div>
 </div>
