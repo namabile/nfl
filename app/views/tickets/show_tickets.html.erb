@@ -22,7 +22,7 @@
 					select("ticket", "quantity", ticket[:valid_splits][:int].sort)
 				end %>
 				</td>
-				<td><%= link_to "Add to Cart", get_checkout_link(@event.event_id,ticket[:id],ticket[:actual_price],2), :class=>"btn btn-primary" %></td>
+				<td><%= link_to "Add to Cart", get_checkout_link(ticket[:event_id],ticket[:id],ticket[:actual_price],2), :class=>"btn btn-primary" %></td>
 			</tr>
 			<% end -%>
 			</tbody>
