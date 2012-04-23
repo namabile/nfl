@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.1'
 
 gem 'savon'
+gem 'flickraw'
 
 group :development do
   gem 'sqlite3', '1.3.5'

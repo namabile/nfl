@@ -1,4 +1,5 @@
 class TicketsController < ApplicationController
+	caches_page :show_tickets, :expires_in => 5.minutes
 	def show_tickets
 		client = Savon::Client.new("http://tnwebservices-test.ticketnetwork.com/tnwebservice/v3.0/WSDL/tnwebservice.xml")
 		event_id = params[:event_id]

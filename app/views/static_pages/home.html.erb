@@ -7,8 +7,7 @@
 <div class="row">
 	<div class="span8 offset4" id="content">
 		<br />
-		<img src="http://farm3.staticflickr.com/2447/3889973492_04f8690fb9_z.jpg" alt="Nick's NFL Tickets">
-		<h6>via Flikr user <a href="#">Example</a></h6>
+		<%= get_flickr_photo('group') %>
 		<br />
 		<p>
 		Nick's NFL tickets has a full seclection of the finest tickets to the hottest football games. Our site is 128 bit encrypted and secure. Our tickets are also backed by Ticket Network's 100% guarantee. This means your NFL tickets will be 100% authentic and are guaranteed to arrive before the event. We appreciate your business and hope you will come back to see us soon!
@@ -20,7 +19,7 @@
 		  <tr><td><a href='#'>AFC Playoff Tickets</a></td></tr>
 		  <tr><td><a href='#'>2012 Pro Bowl Tickets</a></td></tr>
 		</table>
-		<h3><%= Time.now.year %> NFL Tickets by Team</h3>
+		<h3><%= Time.now.year %> MLB Tickets by Team</h3>
 		<table class="table table-striped">
 			<% @teams.each do |team| %>
 				<tr><td><%= link_to "#{team.name} Tickets", "#{team.name.gsub(" ","-")}-Tickets" %></td></tr>
