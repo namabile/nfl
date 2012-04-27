@@ -6,7 +6,7 @@ gem 'savon'
 gem 'flickraw'
 
 group :development do
-  gem 'sqlite3', '1.3.5'
+	gem 'sqlite3', '1.3.5'
 	gem 'rspec-rails', '2.8.1'
 	gem 'guard-rspec', '0.5.5'
   gem 'annotate', '2.4.1.beta1'
@@ -32,4 +32,8 @@ end
 
 group :production do
 	gem 'pg', '0.12.2'
+	gem 'therubyracer'
+	gem 'multi_json'
+	gem 'dalli'
+	gem 'memcache-client'
 end
