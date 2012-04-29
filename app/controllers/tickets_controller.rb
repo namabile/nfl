@@ -6,10 +6,16 @@ class TicketsController < ApplicationController
 		response = client.request :v3, :get_tickets,
 			body: { 
 				"websiteConfigID" => 10697, 
-				"eventID" => event_id 
+				"eventID" => event_id,
+				"numberOfRecords" => 10
 			}
 		@tickets = response.to_hash[:get_tickets_response][:get_tickets_result]
-		#@tickets = @tickets.sort_by{ |actual_price, price| price }
 		@event = Event.find_by_event_id(event_id)
+		@prices = []
+		@tickets[:ticket_group].each do |ticket|
+			@prices.push ticket[:actual_price].to_i
+		end
+		@min_price = @prices.min
+		@max_price = @prices.max
 	end
 end

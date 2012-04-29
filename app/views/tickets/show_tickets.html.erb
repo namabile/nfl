@@ -1,8 +1,17 @@
 <div class="row">
 	<div class="span8 offset4">
 		<h1><%= "Tickets to the #{@event.name}" %></h1>
-		<h2><%= "#{@event.date}" %></h2>
-		<table class="table">
+		<h2>
+			<%= @event.date.localtime.strftime("%a %b %-d, %Y") %> at
+			<%= @event.date.localtime.strftime("%-I:%M %p") %>
+		</h2>
+		<br />
+		<%= content_tag "div", id: "price-label", data: {min_price: @min_price, max_price: @max_price} do %>
+			<p id="amount">Price Range</p>
+		<% end %>
+		<div id="slider"></div>
+		<br />
+		<table id="products-table">
 			<thead>
 				<th>Section</th>
 				<th>Row</th>
@@ -12,17 +21,17 @@
 			</thead>
 			<tbody>
 			<% @tickets[:ticket_group].each do |ticket| %>
-			<tr>
+			<tr class="ticket" id="#{ticket[:id]}">
 				<td><%= "#{ticket[:section]}" %></td>
 				<td><%= "#{ticket[:row]}" %></td>
-				<td><%= "#{ticket[:actual_price]}" %></td>
+				<td class="price"><%= "#{ticket[:actual_price]}" %></td>
 				<td><%= if ticket[:valid_splits][:int].length == 1
 					select("ticket", "quantity", ticket[:valid_splits][:int].split)
 				else
 					select("ticket", "quantity", ticket[:valid_splits][:int].sort)
 				end %>
 				</td>
-				<td><%= link_to "Add to Cart", get_checkout_link(ticket[:event_id],ticket[:id],ticket[:actual_price],2), :class=>"btn btn-primary" %></td>
+				<td><%= get_checkout_link(ticket[:event_id],ticket[:id],ticket[:actual_price],2) %></td>
 			</tr>
 			<% end -%>
 			</tbody>

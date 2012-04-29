@@ -4,6 +4,7 @@ gem 'rails', '3.2.1'
 
 gem 'savon'
 gem 'flickraw'
+gem 'rubber'
 
 group :development do
 	gem 'sqlite3', '1.3.5'

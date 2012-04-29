@@ -11,3 +11,4 @@
  *= require_self
  *= require_tree .
 */
+@import url("http://code.jquery.com/ui/1.8.19/themes/base/jquery-ui.css");
