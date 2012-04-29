@@ -29,9 +29,12 @@ $(function() {
 	$( "#amount" ).val( "$" + $( "#slider" ).slider( "values", 0 ) +
 		" - $" + $( "#slider" ).slider( "values", 1 ) );
 
-	$(".add-to-cart").bind("click", replace_quantity);
-	function replace_quantity() {
-		var qty_selection = 2;
-		$('.add-to-cart').attr("href").replace("treq=2","treq=" + qty_selection);
-	}
+	$("a.add-to-cart").each(function() {
+		$(this).click(function () {
+			event.preventDefault();
+			var qty_selection = 3;
+			var new_link = $(this).attr("href").replace("treq%3D2","treq%3D" + String(qty_selection));
+			document.location.href = new_link;
+		});
+	});
 });
