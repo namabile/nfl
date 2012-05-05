@@ -5,6 +5,7 @@ set :rails_env, Rubber.env
 on :load do
   set :application, rubber_env.app_name
   set :runner,      rubber_env.app_user
+  server "ec2-107-20-192-59.compute-1.amazonaws.com", :web, :app, :db, :primary => true
   set :deploy_to,   "/mnt/#{application}-#{Rubber.env}"
   set :copy_exclude, [".git/*", ".bundle/*", "log/*", ".rvmrc"]
 end
@@ -15,10 +16,11 @@ set :scm, "git"
 set :repository, "git@github.com:namabile/nfl.git"
 set :deploy_via, :remote_cache
 set :branch, "master"
+ssh_options[:forward_agent] = true
 
 # Easier to do system level config as root - probably should do it through
 # sudo in the future.  We use ssh keys for access, so no passwd needed
-set :user, 'root'
+set :user, 'ubuntu'
 set :password, nil
 
 # Use sudo with user rails for cap deploy:[stop|start|restart]

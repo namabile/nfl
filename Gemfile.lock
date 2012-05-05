@@ -231,6 +231,7 @@ DEPENDENCIES
   factory_girl_rails (= 1.4.0)
   flickraw
   guard-rspec (= 0.5.5)
+  highline
   jquery-rails
   memcache-client
   multi_json
