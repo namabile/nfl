@@ -38,3 +38,5 @@ group :production do
 	gem 'dalli'
 	gem 'memcache-client'
 end
+gem 'rubber', '2.0.0'
+gem 'open4'
