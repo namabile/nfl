@@ -7,8 +7,10 @@ on :load do
   set :runner,      rubber_env.app_user
   server "ec2-107-20-192-59.compute-1.amazonaws.com", :web, :app, :db, :primary => true
   set :deploy_to,   "/var/rails_apps/topbaseballtickets"
-  set :rvm_type, :user
+  set :rvm_type, :system
   set :copy_exclude, [".git/*", ".bundle/*", "log/*", ".rvmrc"]
+  set :rvm_ruby_string, 'ruby-1.9.3-p194@rails321'
+  require "rvm/capistrano"   
 end
 
 # Use a simple directory tree copy here to make demo easier.
