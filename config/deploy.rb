@@ -6,7 +6,7 @@ on :load do
   set :application, rubber_env.app_name
   set :runner,      rubber_env.app_user
   server "ec2-107-20-192-59.compute-1.amazonaws.com", :web, :app, :db, :primary => true
-  set :deploy_to,   "/mnt/#{application}-#{Rubber.env}"
+  set :deploy_to,   "/var/rails_apps/topbaseballtickets"
   set :copy_exclude, [".git/*", ".bundle/*", "log/*", ".rvmrc"]
 end
 
