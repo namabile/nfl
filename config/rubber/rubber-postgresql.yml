@@ -1,7 +1,7 @@
 # REQUIRED: The credentials for creating/accessing your app's database
 #
 db_user: "postgres"
-db_pass:"Eyecue72"
+db_pass: "Eyecue72"
 db_name: "tickets"
 
 db_replication_user: replication

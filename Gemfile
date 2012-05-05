@@ -5,6 +5,7 @@ gem 'rails', '3.2.1'
 gem 'savon'
 gem 'flickraw'
 gem 'rubber'
+gem 'rvm-capistrano'
 
 group :development do
 	gem 'sqlite3', '1.3.5'
@@ -37,7 +38,7 @@ group :production do
 	gem 'multi_json'
 	gem 'dalli'
 	gem 'memcache-client'
+  gem 'open4'
+  gem 'highline'
 end
 
-gem 'open4'
-gem 'highline'
