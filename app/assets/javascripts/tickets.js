@@ -32,7 +32,7 @@ $(function() {
 	$("a.add-to-cart").each(function() {
 		$(this).click(function () {
 			event.preventDefault();
-			var qty_selection = 3;
+			var qty_selection = $(this).prev().val();
 			var new_link = $(this).attr("href").replace("treq%3D2","treq%3D" + String(qty_selection));
 			document.location.href = new_link;
 		});
