@@ -234,6 +234,7 @@ DEPENDENCIES
   jquery-rails
   memcache-client
   multi_json
+  open4
   pg (= 0.12.2)
   rails (= 3.2.1)
   rspec-rails (= 2.8.1)
