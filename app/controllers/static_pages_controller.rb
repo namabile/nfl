@@ -1,5 +1,5 @@
 class StaticPagesController < ApplicationController
-  caches_actions :home, :expires_in => 5.minutes
+  caches_action :home, :expires_in => 5.minutes
   def home
   	@teams = Team.where(:grandchild_category_id => 16)
   end
