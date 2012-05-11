@@ -1,32 +1,26 @@
-<div class="row">
-	<div class="span8 offset4">
-		<h1>Top Baseball Tickets</h1>
-		<h2>Welcome to your number one source for MLB tickets!</h2>
-	</div>
+<div class="page-header">
+	<h1>Top Baseball Tickets</h1>
+	<h2>Welcome to your number one source for MLB tickets!</h2>
 </div>
-<div class="row">
-	<div class="span8 offset4" id="content">
-		<br />
-		<%= get_flickr_photo('group') %>
-		<br />
-		<p>
-		Nick's NFL tickets has a full seclection of the finest tickets to the hottest football games. Our site is 128 bit encrypted and secure. Our tickets are also backed by Ticket Network's 100% guarantee. This means your NFL tickets will be 100% authentic and are guaranteed to arrive before the event. We appreciate your business and hope you will come back to see us soon!
-		</p>
-		<h3>Featured Tickets</h3>
-		<table class="table table-striped">
-		  <tr><td><a href='#'>2012 All Star Game Tickets</a></td></tr>
-		  <tr><td><a href='#'>Home Run Derby Tickets</a></td></tr>
-		  <tr><td><a href='#'>2012 NLDS Tickets</a></td></tr>
-		  <tr><td><a href='#'>2012 ALDS Tickets</a></td></tr>
-		  <tr><td><a href='#'>2012 NLCS Tickets</a></td></tr>
-		  <tr><td><a href='#'>2012 ALCC Tickets</a></td></tr>
-		  <tr><td><a href='#'>2012 World Series Tickets</a></td></tr>
-		</table>
-		<h3><%= Time.now.year %> MLB Tickets by Team</h3>
-		<table class="table table-striped">
-			<% @teams.each do |team| %>
-				<tr><td><%= link_to "#{team.name} Tickets", "#{team.name.gsub(" ","-")}-Tickets" %></td></tr>
-			<% end -%>
-		</table>
-	</div>
+<div id="content">
+	<%= get_flickr_photo('group') %>
+	<p>
+		Spring training has come and gone, and now the 2012 MLB baseball season is in full swing. Oil your mitt and get down to the ballpark! With tickets from TopBaseballTickets.com, you just might catch that home run ball. Watch your team live as they compete for a coveted spot in the MLB Playoffs. TopBaseballtickets.com has you covered from the dugout to bleachers with the best 2012 MLB tickets!
+	</p>
+	<h3>Featured Tickets</h3>
+	<table class="table table-striped">
+	  <tr><td><a href='#'>2012 All Star Game Tickets</a></td></tr>
+	  <tr><td><a href='#'>Home Run Derby Tickets</a></td></tr>
+	  <tr><td><a href='#'>2012 NLDS Tickets</a></td></tr>
+	  <tr><td><a href='#'>2012 ALDS Tickets</a></td></tr>
+	  <tr><td><a href='#'>2012 NLCS Tickets</a></td></tr>
+	  <tr><td><a href='#'>2012 ALCC Tickets</a></td></tr>
+	  <tr><td><a href='#'>2012 World Series Tickets</a></td></tr>
+	</table>
+	<h3><%= Time.now.year %> MLB Tickets by Team</h3>
+	<table class="table table-striped">
+		<% @teams.each do |team| %>
+			<tr><td><%= link_to "#{team.name} Tickets", "/events/#{team.name.gsub(" ","-")}-Tickets" %></td></tr>
+		<% end -%>
+	</table>
 </div>

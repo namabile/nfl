@@ -22,11 +22,11 @@ module StaticPagesHelper
 		sizes = flickr.photos.getSizes(:photo_id => photo_id, :secret => photo_secret)
 		medium = sizes.find { |s| s.label == 'Medium 640' }
 		ratio = medium.height.to_i/medium.width.to_i
-		height = 620 * ratio
+		height = 640 * ratio
 		height = 500 if height > 500 
 		flickr_hero_url = medium.source
 		flickr_user_url = FlickRaw.url_profile(info)
 
-		"#{image_tag(flickr_hero_url, alt: 'Top Baseball Tickets', width: '620px', height: height)}<h6>via Flickr user #{link_to(photo_user_name, flickr_user_url)}</h6>".html_safe
+		"#{image_tag(flickr_hero_url, alt: 'Top Baseball Tickets', width: '640px', height: height)}<h6>via Flickr user #{link_to(photo_user_name, flickr_user_url)}</h6>".html_safe
 	end
 end

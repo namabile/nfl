@@ -40,4 +40,16 @@ class Team < ActiveRecord::Base
 			end
 		end
 	end		
+
+	def get_teams_qa
+		response = @client.request :v3, :get_performer_by_category,
+			body: { 
+				"websiteConfigID" => 10697, 
+				"parentCategoryID" => 1, 
+				"childCategoryID" => 63, 
+				"grandchildCategoryID" => 16
+			}		
+		return {:request => @client.http.to_json, :response => response.to_json}
+	end
+
 end

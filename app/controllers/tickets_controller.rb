@@ -18,4 +18,16 @@ class TicketsController < ApplicationController
 		@min_price = @prices.min
 		@max_price = @prices.max
 	end
+	def get_tickets_qa
+		client = Savon::Client.new("http://tnwebservices-test.ticketnetwork.com/tnwebservice/v3.0/WSDL/tnwebservice.xml")
+		event_id = params[:event_id]
+		response = client.request :v3, :get_tickets,
+			body: { 
+				"websiteConfigID" => 10697, 
+				"eventID" => event_id,
+				"numberOfRecords" => 10
+			}
+		@response = response.to_json
+		@request = client.http.to_json		
+	end
 end

@@ -74,4 +74,12 @@ class Event < ActiveRecord::Base
 			end
 		end
 	end
+	def self.get_events_qa
+		response = @client.request :v3, :get_events,
+		body: { 
+			"websiteConfigID" => 10697, 
+			"grandchildCategoryID" => 16 
+		}
+		return {:request => @client.http.to_json, :response => response.to_json }
+	end
 end
