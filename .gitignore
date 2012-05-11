@@ -14,3 +14,9 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+#ignore precompiled assets and vendor bundle
+/vendor/*
+
+#ignore cached items
+/public/*
