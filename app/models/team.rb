@@ -9,7 +9,6 @@
 #  updated_at             :datetime        not null
 #  grandchild_category_id :integer
 #
-
 class Team < ActiveRecord::Base
 	has_many :events
 
@@ -41,7 +40,7 @@ class Team < ActiveRecord::Base
 		end
 	end		
 
-	def get_teams_qa
+	def self.get_teams_qa
 		response = @client.request :v3, :get_performer_by_category,
 			body: { 
 				"websiteConfigID" => 10697, 

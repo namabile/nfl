@@ -13,6 +13,6 @@ class StaticPagesController < ApplicationController
   def get_performers
   	data = Team.get_teams_qa
   	@request = data[:request]
-  	@response = data[:response]
+    @response = data[:response]
   end
 end
