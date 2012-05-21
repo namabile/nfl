@@ -22,7 +22,7 @@ class Event < ActiveRecord::Base
 	belongs_to :team
 	attr_accessible :event_id, :name, :city, :state, :state_id, :venue, :venue_id, :date, :map_url,
 		:grandchild_category_id, :team_id
-	@client = Savon::Client.new("http://tnwebservices-test.ticketnetwork.com/tnwebservice/v3.0/WSDL/tnwebservice.xml")
+	@client = Savon::Client.new("http://tnwebservices.ticketnetwork.com/tnwebservice/v3.2/WSDL/tnwebservicestringinputs.xml")
 
 	def self.find_by_slug(slug)
 		Event.get_team_name(slug)
@@ -43,23 +43,26 @@ class Event < ActiveRecord::Base
 				"grandchildCategoryID" => 16 
 			}
 		if response.success?
+			columns = [:event_id, :name, :city, :state, :state_id, :venue, :venue_id, :date, :map_url, :grandchild_category_id]
+			values = []
 			data = response.to_hash[:get_events_response][:get_events_result]
 			data[:event].each do |event|
-				item = Event.new
-				item.event_id = event[:id]
-				item.name = event[:name]
-				item.city = event[:city]
-				item.state = event[:state_province]
-				item.state_id = event[:state_province_id]
-				item.venue = event[:venue]
-				item.venue_id = event[:venue_id]
-				item.date = event[:date]
-				item.map_url = event[:map_url]
-				item.grandchild_category_id = event[:grandchild_category_id]
-				item.save
+				values.push([
+					item.event_id = event[:id]
+					item.name = event[:name]
+					item.city = event[:city]
+					item.state = event[:state_province]
+					item.state_id = event[:state_province_id]
+					item.venue = event[:venue]
+					item.venue_id = event[:venue_id]
+					item.date = event[:date]
+					item.map_url = event[:map_url]
+					item.grandchild_category_id = event[:grandchild_category_id]
+				])
 			end
+			Event.import columns, values, :validate => true
 		end
-	end	
+	end
 
 	def self.get_performers
 		response = @client.request :v3, :get_event_performers,

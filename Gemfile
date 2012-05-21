@@ -6,8 +6,11 @@ gem 'savon'
 gem 'flickraw'
 gem 'rubber'
 gem 'capistrano'
+gem 'activerecord-import'
+gem 'rufus-scheduler'
 
 group :development do
+  gem 'debugger'
 	gem 'sqlite3', '1.3.5'
 	gem 'rspec-rails', '2.8.1'
 	gem 'guard-rspec', '0.5.5'
@@ -41,4 +44,3 @@ group :production do
   gem 'open4'
   gem 'highline'
 end
-

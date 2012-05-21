@@ -12,7 +12,7 @@
 class Team < ActiveRecord::Base
 	has_many :events
 
-	@client = Savon::Client.new("http://tnwebservices-test.ticketnetwork.com/tnwebservice/v3.0/WSDL/tnwebservice.xml")
+	@client = Savon::Client.new("http://tnwebservices.ticketnetwork.com/tnwebservice/v3.2/WSDL/tnwebservicestringinputs.xml")
 
 	def self.get_teams
 		response = @client.request :v3, :get_performer_by_category,
@@ -23,19 +23,17 @@ class Team < ActiveRecord::Base
 				"grandchildCategoryID" => 16
 			}
 		if response.success?
-			inserts = []
+			columns = [:name, :team_id, :grandchild_category_id]
+			values = []
 			data = response.to_hash[:get_performer_by_category_response][:get_performer_by_category_result]
 			data[:performer].each do |performer|
-				name = performer[:description]
-				team_id = performer[:id]
-				grandchild_category_id = performer[:category][:grandchild_category_id]
-				
-				inserts.push "('#{name}', #{team_id}, '#{Time.now.utc}', '#{Time.now.utc}', #{grandchild_category_id})"
+				values.push([
+					performer[:description],
+					performer[:id],
+					performer[:category][:grandchild_category_id]
+				])
 			end
-			#inserts = inserts.join(", ")
-			inserts.each do |insert|
-				sql = "INSERT INTO teams (name, team_id, created_at, updated_at, grandchild_category_id) VALUES #{insert}"	
-				Team.connection.execute(sql)
+			Team.import columns, values, :validate => true
 			end
 		end
 	end		

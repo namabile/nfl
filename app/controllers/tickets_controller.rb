@@ -1,7 +1,7 @@
 class TicketsController < ApplicationController
 	caches_action :show_tickets, :expires_in => 5.minutes
 	def show_tickets
-		client = Savon::Client.new("http://tnwebservices-test.ticketnetwork.com/tnwebservice/v3.0/WSDL/tnwebservice.xml")
+		client = Savon::Client.new("http://tnwebservices.ticketnetwork.com/tnwebservice/v3.2/WSDL/tnwebservicestringinputs.xml")
 		event_id = params[:event_id]
 		response = client.request :v3, :get_tickets,
 			body: { 
@@ -19,7 +19,7 @@ class TicketsController < ApplicationController
 		@max_price = @prices.max
 	end
 	def get_tickets_qa
-		client = Savon::Client.new("http://tnwebservices-test.ticketnetwork.com/tnwebservice/v3.0/WSDL/tnwebservice.xml")
+		client = Savon::Client.new("http://tnwebservices.ticketnetwork.com/tnwebservice/v3.2/WSDL/tnwebservicestringinputs.xml")
 		event_id = params[:event_id]
 		response = client.request :v3, :get_tickets,
 			body: { 
