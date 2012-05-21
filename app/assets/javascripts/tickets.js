@@ -34,12 +34,7 @@ $(function() {
 			event.preventDefault();
 			var qty_selection = $(this).prev().val();
 			var new_link = $(this).attr("href").replace("treq%3D2","treq%3D" + String(qty_selection));
-
-			var qs = new_link.query(true)
-			var order_id = ;
-			var total = ;
-			var price_per_ticket = ;
-			
+						
 			_gaq.push(['_addTrans',
 				'1234',           
 				'Top Baseball Tickets',
