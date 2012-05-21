@@ -34,10 +34,15 @@ $(function() {
 			event.preventDefault();
 			var qty_selection = $(this).prev().val();
 			var new_link = $(this).attr("href").replace("treq%3D2","treq%3D" + String(qty_selection));
+
+			var qs = new_link.query(true)
+			var order_id = ;
+			var total = ;
+			var price_per_ticket = ;
 			
 			_gaq.push(['_addTrans',
 				'1234',           
-				'Acme Clothing',
+				'Top Baseball Tickets',
 				'11.99',
 			]);
 
@@ -47,7 +52,7 @@ $(function() {
 				'T-Shirt',   
 				'Green Medium',
 				'11.99',
-				'1'
+				qty_selection
 			]);
 			_gaq.push(['_trackTrans']);
 
