@@ -34,6 +34,23 @@ $(function() {
 			event.preventDefault();
 			var qty_selection = $(this).prev().val();
 			var new_link = $(this).attr("href").replace("treq%3D2","treq%3D" + String(qty_selection));
+			
+			_gaq.push(['_addTrans',
+				'1234',           
+				'Acme Clothing',
+				'11.99',
+			]);
+
+			_gaq.push(['_addItem',
+				'1234',           
+				'DD44',        
+				'T-Shirt',   
+				'Green Medium',
+				'11.99',
+				'1'
+			]);
+			_gaq.push(['_trackTrans']);
+
 			document.location.href = new_link;
 		});
 	});
