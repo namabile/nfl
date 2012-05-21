@@ -7,7 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<%= render :partial => "shared/nav_bar" unless params[:action] == "home" %>
 <%= yield %>
 <%= debug(params) if Rails.env.development? %>
 <script type="text/javascript">

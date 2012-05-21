@@ -48,16 +48,16 @@ class Event < ActiveRecord::Base
 			data = response.to_hash[:get_events_response][:get_events_result]
 			data[:event].each do |event|
 				values.push([
-					item.event_id = event[:id]
-					item.name = event[:name]
-					item.city = event[:city]
-					item.state = event[:state_province]
-					item.state_id = event[:state_province_id]
-					item.venue = event[:venue]
-					item.venue_id = event[:venue_id]
-					item.date = event[:date]
-					item.map_url = event[:map_url]
-					item.grandchild_category_id = event[:grandchild_category_id]
+					event[:id],
+					event[:name],
+					event[:city],
+					event[:state_province],
+					event[:state_province_id],
+					event[:venue],
+					event[:venue_id],
+					event[:date],
+					event[:map_url],
+					event[:grandchild_category_id]
 				])
 			end
 			Event.import columns, values, :validate => true

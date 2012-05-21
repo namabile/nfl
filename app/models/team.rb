@@ -34,7 +34,6 @@ class Team < ActiveRecord::Base
 				])
 			end
 			Team.import columns, values, :validate => true
-			end
 		end
 	end		
 
