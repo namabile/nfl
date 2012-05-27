@@ -36,6 +36,7 @@ class Event < ActiveRecord::Base
 		@team_name = slug.chomp("-Tickets").gsub("-"," ")
 	end
 
+
 	def self.get_events
 		response = @client.request :v3, :get_events,
 			body: { 

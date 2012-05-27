@@ -12,7 +12,7 @@
 			<tbody>
 			<% @events.each do |event| %>
 			<tr>
-				<td><strong><%= link_to "#{event.name}", "#" %></strong></td>
+				<td><strong><%= event_link(event.name, event.event_id, event.date) %></strong></td>
 				<td>
 					<%= event.date.localtime.strftime("%a %b %-d, %Y") %><br />
 					<%= event.date.localtime.strftime("%-I:%M %p") %>
@@ -20,9 +20,8 @@
 				<td>
 					<%= "#{event.venue}" %><br />
 					<%= "#{event.city}, #{event.state}" %></td>
-				<td>From $1</td>
-				<td><%= link_to "See Tickets", "#{@team_name.gsub(" ","-")}-Tickets/#{event.event_id}", 
-				 :class=>"btn btn-primary" %></td>
+				<td>From <%= number_to_currency(Random.rand(15 + 1), :precision => 0) %></td>
+				<td><%= event_link(event.name, event.event_id, event.date, "button") %></td>
 			</tr>
 			<% end -%>
 			</tbody>

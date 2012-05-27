@@ -54,6 +54,14 @@ $(function() {
 			]);
 			_gaq.push(['_trackTrans']);
 
+			mixpanel.track("Add To Cart", {
+				"Event Name": event_name,
+				"Event Date": event_date,
+				"Price": price,
+				"Qty": qty_selection,
+				"Total Amount": total
+			});
+
 			document.location.href = new_link;
 		});
 	});
