@@ -1,3 +1,8 @@
+<script type="text/javascript">
+	mixpanel.track("View Events", {
+		"Event Name": "<%= @team_name %>"
+	});
+</script>
 <div>
 	<div>
 		<h1><%= "#{Time.now.year} #{@team_name} Schedule" %></h1>
