@@ -33,20 +33,23 @@ $(function() {
 		$(this).click(function () {
 			event.preventDefault();
 			var qty_selection = $(this).prev().val();
+			var price = $(this).data("price")
+			var total = price * qty_selection
+			var session_id = $(this).data("session")
 			var new_link = $(this).attr("href").replace("treq%3D2","treq%3D" + String(qty_selection));
 						
 			_gaq.push(['_addTrans',
-				'1234',           
+				session_id,           
 				'Top Baseball Tickets',
-				'11.99',
+				total,
 			]);
 
 			_gaq.push(['_addItem',
-				'1234',           
-				'DD44',        
-				'T-Shirt',   
-				'Green Medium',
-				'11.99',
+				session_id,           
+				event_id,        
+				event_name,   
+				event_date,
+				price,
 				qty_selection
 			]);
 			_gaq.push(['_trackTrans']);

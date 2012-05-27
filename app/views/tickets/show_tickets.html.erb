@@ -1,3 +1,8 @@
+<script type="text/javascript">
+	var event_name = "<%= @event.name %>"; 
+	var event_date = "<%= @event.date.localtime.strftime("%a %b %-d, %Y") %>";
+	var event_id = "<%= params[:event_id] %>";
+</script>
 <div>
 	<div>
 		<h1><%= "Tickets to the #{@event.name}" %></h1>
@@ -5,13 +10,13 @@
 			<%= @event.date.localtime.strftime("%a %b %-d, %Y") %> at
 			<%= @event.date.localtime.strftime("%-I:%M %p") %>
 		</h2>
-		<br />
-		<%= content_tag "div", id: "price-label", data: {min_price: @min_price, max_price: @max_price} do %>
-			<p id="amount">Price Range</p>
-		<% end %>
-		<div id="slider"></div>
-		<br />
-		<table id="products-table">
+		<div id="price-filter" class="well span4">
+			<%= content_tag "div", id: "price-label", data: {min_price: @min_price, max_price: @max_price} do %>
+				<p id="amount">Price Range</p>
+			<% end %>
+			<div id="slider"></div>
+		</div>
+		<table id="products-table" class="table">
 			<thead>
 				<th>Section</th>
 				<th>Row</th>

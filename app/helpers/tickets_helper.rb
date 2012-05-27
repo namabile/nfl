@@ -17,6 +17,6 @@ module TicketsHelper
 		tn_url = "https://secure.ticketnetwork.com/checkout/Checkout.aspx?"
 		base_url = "brokerid=#{broker_id}&sitenumber=#{site_number}&evtID=#{event_id}&tgid=#{ticket_group_id}&price=#{price}&treq=#{requested_qty}&SessionId=#{session_id}"
 		url = "#{affiliate_url + url_encode(tn_url + base_url)}"
-		link_to "Add to Cart", url, class: "btn btn-primary add-to-cart"
+		link_to "Add to Cart", url, class: "btn btn-primary add-to-cart", "data-price" => price, "data-session" => session_id
 	end
 end
