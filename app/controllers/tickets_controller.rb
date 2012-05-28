@@ -11,6 +11,7 @@ class TicketsController < ApplicationController
 			}
 		@tickets = response.to_hash[:get_tickets_response][:get_tickets_result]
 		@event = Event.find_by_event_id(event_id)
+		@team_name = Team.find_by_team_id(@event.team_id).name
 		@prices = []
 		@tickets[:ticket_group].each do |ticket|
 			@prices.push ticket[:actual_price].to_i

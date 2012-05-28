@@ -48,4 +48,9 @@ class Team < ActiveRecord::Base
 		return {:request => @client.http.to_json, :response => response.to_json}
 	end
 
+	def self.refresh_teams
+		Team.delete_all
+		Team.get_teams
+		Update.post_update("teams updated")
+	end
 end

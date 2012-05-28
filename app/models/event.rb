@@ -86,4 +86,12 @@ class Event < ActiveRecord::Base
 		}
 		return {:request => @client.http.to_json, :response => response.to_json }
 	end
+
+	def self.refresh_events
+		Event.delete_all
+		Event.get_events
+		Update.post_update("events updated")		
+		Event.get_performers
+		Update.post_update("performers updated")
+	end
 end
