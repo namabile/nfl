@@ -25,7 +25,14 @@
 				<td>
 					<%= "#{event.venue}" %><br />
 					<%= "#{event.city}, #{event.state}" %></td>
-				<td>From <%= number_to_currency(Random.rand(15 + 1), :precision => 0) %></td>
+				<td>
+					From 
+					<% if event.min_ticket_price.blank? %>
+						<%= number_to_currency(Random.rand(15) + 1, :precision => 0) %>
+					<% else %>
+						<%= number_to_currency(event.min_ticket_price, :precision => 0) %>
+					<% end %>
+				</td>
 				<td><%= event_link(event.name, event.event_id, event.date, "button") %></td>
 			</tr>
 			<% end -%>

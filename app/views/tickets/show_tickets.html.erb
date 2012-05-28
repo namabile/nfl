@@ -35,7 +35,7 @@
 			<tr class="ticket" id="#{ticket[:id]}">
 				<td><%= "#{ticket[:section]}" %></td>
 				<td><%= "#{ticket[:row]}" %></td>
-				<td class="price"><%= "#{ticket[:actual_price]}" %></td>
+				<td class="price"><%= "#{number_to_currency(ticket[:actual_price], :precision => 0)}" %></td>
 				<td><%= if ticket[:valid_splits][:int].length == 1
 					select("ticket", "quantity", ticket[:valid_splits][:int].split)
 				else
