@@ -41,24 +41,25 @@ class Event < ActiveRecord::Base
 		response = @client.request :v3, :get_events,
 			body: { 
 				"websiteConfigID" => 10697, 
-				"grandchildCategoryID" => 16 
+				"grandchildCategoryID" => 16,
+				"numberOfEvents" => 3
 			}
 		if response.success?
 			columns = [:event_id, :name, :city, :state, :state_id, :venue, :venue_id, :date, :map_url, :grandchild_category_id]
 			values = []
-			data = response.to_hash[:get_events_response][:get_events_result]
-			data[:event].each do |event|
+			data = Hash.from_xml(response.to_xml)
+			data["Envelope"]["Body"]["GetEventsResponse"]["GetEventsResult"]["Event"].each do |event|
 				values.push([
-					event[:id],
-					event[:name],
-					event[:city],
-					event[:state_province],
-					event[:state_province_id],
-					event[:venue],
-					event[:venue_id],
-					event[:date],
-					event[:map_url],
-					event[:grandchild_category_id]
+					event["ID"],
+					event["Name"],
+					event["City"],
+					event["StateProvince"],
+					event["StateProvinceID"],
+					event["Venue"],
+					event["VenueID"],
+					event["Date"],
+					event["MapURL"],
+					event["GrandchildCategoryID"]
 				])
 			end
 			Event.import columns, values, :validate => true

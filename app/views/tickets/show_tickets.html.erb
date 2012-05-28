@@ -3,6 +3,7 @@
 	var event_date = "<%= @event.date.localtime.strftime("%a %b %-d, %Y") %>";
 	var event_id = "<%= params[:event_id] %>";
 	var team_name = "<%= @team_name %>";
+	
 	mixpanel.track("View Tickets", {
 		"Team Name": team_name,
 		"Event Name": event_name,
