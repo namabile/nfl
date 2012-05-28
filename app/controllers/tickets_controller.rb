@@ -6,8 +6,7 @@ class TicketsController < ApplicationController
 		response = client.request :v3, :get_tickets,
 			body: { 
 				"websiteConfigID" => 10697, 
-				"eventID" => event_id,
-				"numberOfRecords" => 10
+				"eventID" => event_id
 			}
 		@tickets = response.to_hash[:get_tickets_response][:get_tickets_result]
 		@event = Event.find_by_event_id(event_id)
