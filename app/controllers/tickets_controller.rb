@@ -18,7 +18,10 @@ class TicketsController < ApplicationController
 		end
 		@min_price = @prices.min
 		@max_price = @prices.max
+
+		@event.update_attribute :min_ticket_price, @min_price
 	end
+	
 	def get_tickets_qa
 		client = Savon::Client.new("http://tnwebservices.ticketnetwork.com/tnwebservice/v3.2/WSDL/tnwebservicestringinputs.xml")
 		event_id = params[:event_id]
