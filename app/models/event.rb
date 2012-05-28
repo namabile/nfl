@@ -41,8 +41,7 @@ class Event < ActiveRecord::Base
 		response = @client.request :v3, :get_events,
 			body: { 
 				"websiteConfigID" => 10697, 
-				"grandchildCategoryID" => 16,
-				"numberOfEvents" => 3
+				"grandchildCategoryID" => 16
 			}
 		if response.success?
 			columns = [:event_id, :name, :city, :state, :state_id, :venue, :venue_id, :date, :map_url, :grandchild_category_id]
