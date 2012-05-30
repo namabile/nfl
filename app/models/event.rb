@@ -72,10 +72,18 @@ class Event < ActiveRecord::Base
 			}
 		if response.success?
 			data = response.to_hash[:get_event_performers_response][:get_event_performers_result]
+			columns = [:event_id, :team_id]
+			values = []
 			data[:event_performer].each do |performer|
+				values.push([
+						performer[:event_id],
+						performer[:performer_id]
+					])
+			end
+			ids = Event.find(:all, :select => :event_id).map {|x| x.event_id}
+			values = values & 
 				item = Event.where(:event_id => performer[:event_id])
 				item.first.update_attribute :team_id, performer[:performer_id] unless item.empty?
-			end
 		end
 	end
 	def self.get_events_qa

@@ -33,10 +33,12 @@
 			</thead>
 			<tbody>
 			<% @tickets[:ticket_group].each do |ticket| %>
-			<tr class="ticket" id="#{ticket[:id]}">
+			<tr class="ticket" id=<%= "#{ticket[:id]}" %>>
 				<td><%= "#{ticket[:section]}" %></td>
 				<td><%= "#{ticket[:row]}" %></td>
-				<td class="price"><%= "#{number_to_currency(ticket[:actual_price], :precision => 0)}" %></td>
+				<td class="price">$<span>
+					<%= "#{ticket[:actual_price]}" %>
+				</span></td>
 				<td><%= if ticket[:valid_splits][:int].length == 1
 					select("ticket", "quantity", ticket[:valid_splits][:int].split)
 				else

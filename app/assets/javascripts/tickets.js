@@ -16,7 +16,7 @@ $(function() {
    			var min_value = ui.values[0];
    			var max_value = ui.values[1];
    			$("#products-table").find(".ticket").each(function() {
-   				var price = $(this).children(".price").text();
+   				var price = $("span", this).text();
    				if(price < min_value || price > max_value ) {
    					$(this).css("display", "none");
    				}
@@ -52,6 +52,7 @@ $(function() {
 				price,
 				qty_selection
 			]);
+			
 			_gaq.push(['_trackTrans']);
 
 			mixpanel.track("Add To Cart", {
