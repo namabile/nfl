@@ -30,9 +30,10 @@ $(function() {
 		" - $" + $( "#slider" ).slider( "values", 1 ) );
 
 	$("a.add-to-cart").each(function() {
-		$(this).click(function () {
+		$(this).click(function (event) {
 			event.preventDefault();
-			var qty_selection = $(this).prev().val();
+			var ticket_id = $(this).closest("tr").attr("id");
+			var qty_selection = $("#"+ticket_id+" #ticket_quantity").val();
 			var price = $(this).data("price")
 			var total = price * qty_selection
 			var session_id = $(this).data("session")
@@ -42,6 +43,11 @@ $(function() {
 				session_id,           
 				'Top Baseball Tickets',
 				total,
+				0,		//tax
+				0,		//shipping
+				'',		//city
+				'',		//state
+				''		//country
 			]);
 
 			_gaq.push(['_addItem',
@@ -52,7 +58,7 @@ $(function() {
 				price,
 				qty_selection
 			]);
-			
+
 			_gaq.push(['_trackTrans']);
 
 			mixpanel.track("Add To Cart", {
