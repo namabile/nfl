@@ -30,7 +30,7 @@ $(function() {
 		" - $" + $( "#slider" ).slider( "values", 1 ) );
 
 	$("a.add-to-cart").each(function() {
-		$(this).click(function (event) {
+		$(this).click(function(event) {
 			event.preventDefault();
 			var ticket_id = $(this).closest("tr").attr("id");
 			var qty_selection = $("#"+ticket_id+" #ticket_quantity").val();
@@ -61,7 +61,7 @@ $(function() {
 
 			_gaq.push(['_trackTrans']);
 
-			mixpanel.track_links(".add-to-cart", "Add To Cart", {
+			mixpanel.track("Add To Cart", {
 				"Event Name": event_name,
 				"Event Date": event_date,
 				"Price": price,
@@ -69,7 +69,9 @@ $(function() {
 				"Total Amount": total
 			});
 
-			document.location.href = new_link;
+			setTimeout(function() {	
+				document.location.href = new_link;
+			}, 500);
 		});
 	});
 });
