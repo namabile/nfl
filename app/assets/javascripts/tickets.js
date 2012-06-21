@@ -61,7 +61,7 @@ $(function() {
 
 			_gaq.push(['_trackTrans']);
 
-			mixpanel.track("Add To Cart", {
+			mixpanel.track_links(".add-to-cart", "Add To Cart", {
 				"Event Name": event_name,
 				"Event Date": event_date,
 				"Price": price,
