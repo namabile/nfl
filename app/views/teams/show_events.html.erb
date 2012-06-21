@@ -17,7 +17,7 @@
 			<tbody>
 			<% @events.each do |event| %>
 			<tr>
-				<td><strong><%= event_link(event.name, event.event_id, event.date) %></strong></td>
+				<td><strong><%= event_link("#{event.name} Tickets", event.event_id, event.date) %></strong></td>
 				<td>
 					<%= event.date.localtime.strftime("%a %b %-d, %Y") %><br />
 					<%= event.date.localtime.strftime("%-I:%M %p") %>
