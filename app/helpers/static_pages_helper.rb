@@ -2,8 +2,8 @@ module StaticPagesHelper
 	require 'flickraw'
 	
 	def get_flickr_photo(type='list')
-		FlickRaw.api_key = 'fef941fcf399b4f6becc35f6e6f2b432'
-		FlickRaw.shared_secret = 'd4f5aacbb7de698c'
+		FlickRaw.api_key = ''
+		FlickRaw.shared_secret = ''
 		group_id = '60356848@N00' #MLB group id
 
 		if type == "list"
